@@ -3,29 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <title>과학실 물품 위치 검색</title>
-  <!-- ✅ 반응형 + 확대 방지 설정 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <!-- ✅ 카카오톡 인앱 브라우저 대응 + 확대 방지 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <style>
     * {
       box-sizing: border-box;
     }
 
-    body {
-      font-family: sans-serif;
-      background-color: #eef7ff;
+    html, body {
       margin: 0;
       padding: 0;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      width: 100%;
+      overflow-x: hidden; /* ✅ 잘림 방지 */
+      font-family: sans-serif;
+      background-color: #eef7ff;
     }
 
     .container {
-      flex: 1;
       display: flex;
       flex-direction: row;
       width: 100%;
-      max-width: 100vw;
+      max-width: 100vw; /* ✅ 가로 스크롤 방지 */
+      min-height: 100vh;
     }
 
     .left {
@@ -44,7 +43,7 @@
     input[type="text"] {
       width: 100%;
       padding: 12px;
-      font-size: 15px; /* ✅ 확대 방지 */
+      font-size: 15px; /* ✅ 확대 방지용 */
       border-radius: 8px;
       border: 1px solid #ccc;
       margin-bottom: 20px;
@@ -77,10 +76,6 @@
     @keyframes blink {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.3; }
-    }
-
-    .right h3 {
-      margin-top: 0;
     }
 
     .list-header {
@@ -116,7 +111,7 @@
       font-size: 14px;
     }
 
-    /* ✅ 반응형 미디어 쿼리 */
+    /* ✅ 반응형 모바일 대응 */
     @media (max-width: 768px) {
       .container {
         flex-direction: column;
