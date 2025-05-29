@@ -3,20 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <title>과학실 물품 위치 검색</title>
+  <!-- ✅ 반응형 + 확대 방지 설정 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: sans-serif;
       background-color: #eef7ff;
       margin: 0;
       padding: 0;
       display: flex;
-      height: 100vh;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     .container {
+      flex: 1;
       display: flex;
+      flex-direction: row;
       width: 100%;
+      max-width: 100vw;
     }
 
     .left {
@@ -35,11 +44,10 @@
     input[type="text"] {
       width: 100%;
       padding: 12px;
-      font-size: 15px; /* ✅ 16px → 15px */
+      font-size: 15px; /* ✅ 확대 방지 */
       border-radius: 8px;
       border: 1px solid #ccc;
       margin-bottom: 20px;
-      box-sizing: border-box;
     }
 
     #map-container {
@@ -50,7 +58,9 @@
 
     #map-container img {
       width: 100%;
+      height: auto;
       border-radius: 10px;
+      display: block;
     }
 
     .marker {
@@ -108,11 +118,6 @@
 
     /* ✅ 반응형 미디어 쿼리 */
     @media (max-width: 768px) {
-      body {
-        flex-direction: column;
-        height: auto;
-      }
-
       .container {
         flex-direction: column;
       }
@@ -128,7 +133,7 @@
       }
 
       input[type="text"] {
-        font-size: 16px; /* 모바일에서는 살짝 키워도 괜찮음 */
+        font-size: 16px;
         padding: 14px;
       }
 
@@ -144,7 +149,7 @@
   <div class="container">
     <!-- 왼쪽: 검색 + 약도 -->
     <div class="left">
-      <h2>🔍 과학실 물품 검색.</h2>
+      <h2>🔍 과학실 물품 검색</h2>
       <input type="text" id="searchBox" placeholder="예: 비커, 알코올 램프 등" />
 
       <ul id="itemList" style="display:none;">
@@ -161,7 +166,6 @@
 
       <div id="map-container">
         <img src="floor-map01.png" alt="과학실 약도" />
-
         <!-- 위치 마커 -->
         <div id="marker-lab1" class="marker" style="top: 30%; left: 25%; display: none;"></div>
         <div id="marker-lab2" class="marker" style="top: 30%; left: 70%; display: none;"></div>
